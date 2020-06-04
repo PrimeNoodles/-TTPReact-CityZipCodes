@@ -5,7 +5,9 @@ import ZipCodes from './ZipCodes.js';
 class App extends Component {
   render() {
     return (
-
+    <>
+      <ZipCodes />
+    </>
     );
   }
 }

@@ -5,7 +5,7 @@ class ZipCode extends Component {
        super(props);
        this.state={
            zip: '',
-           city: null,
+           show: true,
            allData: [],
        };
     }
@@ -21,37 +21,48 @@ class ZipCode extends Component {
                 this.setState({allData: response.data});
                 console.log("State", this.state);
                   })
-                .catch((err) => console.log(err));
-                console.log(this.state);
+                .catch((err) => this.setState({show: false}));
+                this.setState({show: true});
     }
 render(){
-    return (
+    let x = this.state.show === true ? (
         <div>
-        <form className = "text-center mt-3" onSubmit = {this.onSubmit}>
-            <label>
-            ZipCode
-            <input className="ml-2"type="text" placeholder ="Try 10016" value={this.state.zip} onChange = {this.ZipChange} />
-            </label>
-            <input type="submit" value="submit"/>
-        </form>
-            {this.state.allData.map(data => {
-                console.log("Here");
-                return (
-                    <div>
-                        <h1>{data.LocationText}</h1>
-                        <ul>
-                            <li>City: {data.City}</li>
-                            <li>State: {data.State}</li>
-                            <li>Total Wages: {data.TotalWages}</li>
-                            <li>Tax Returned Filled: {data.TaxReturnsFiled}</li>
-                            <li>Estimated Population: {data.EstimatedPopulation}</li>
-                            <li>Location: ({data.Lat}, {data.Long})</li>
-                        </ul>
-                    </div>
-                )
-            })}
-        </div>
-    );
+            <form className = "text-center mt-3" onSubmit = {this.onSubmit}>
+                <label>
+                ZipCode
+                <input className="ml-2"type="text" placeholder ="Try 10016" value={this.state.zip} onChange = {this.ZipChange} />
+                </label>
+                <input type="submit" value="submit"/>
+            </form>
+                {this.state.allData.map(data => {
+                    console.log("Here");
+                    return (
+                        <div>
+                            <h1>{data.LocationText}</h1>
+                            <ul>
+                                <li>City: {data.City}</li>
+                                <li>State: {data.State}</li>
+                                <li>Total Wages: {data.TotalWages}</li>
+                                <li>Tax Returned Filled: {data.TaxReturnsFiled}</li>
+                                <li>Estimated Population: {data.EstimatedPopulation}</li>
+                                <li>Location: ({data.Lat}, {data.Long})</li>
+                            </ul>
+                        </div>
+                    )
+                })}
+        </div>):(
+        <div>
+            <form className = "text-center mt-3" onSubmit = {this.onSubmit}>
+                <label>
+                ZipCode
+                <input className="ml-2"type="text" placeholder ="Try 10016" value={this.state.zip} onChange = {this.ZipChange} />
+                </label>
+                <input type="submit" value="submit"/>
+            </form>
+            <p>Results Not Found</p>
+        </div>)
+    return(
+    <div>{x}</div>)
   }
 }
 export default ZipCode;

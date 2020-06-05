@@ -30,23 +30,25 @@ render(){
             <form className = "text-center mt-3" onSubmit = {this.onSubmit}>
                 <label>
                 ZipCode
-                <input className="ml-2"type="text" placeholder ="Try 10016" value={this.state.zip} onChange = {this.ZipChange} />
+                <input className="ml-2"type="text" placeholder ="Enter Zip Code" value={this.state.zip} onChange = {this.ZipChange} />
                 </label>
                 <input type="submit" value="submit"/>
             </form>
                 {this.state.allData.map(data => {
-                    console.log("Here");
                     return (
-                        <div>
-                            <h1>{data.LocationText}</h1>
-                            <ul>
+                        <div id="size" className = "card border-danger mb-3 mt-3">
+                         <div className ="card-header">{data.LocationText}</div>
+                          <div className ="card-body  text-danger">
+                            <h5 className ="card-title">{data.City}</h5>
+                             <ul>
                                 <li>City: {data.City}</li>
-                                <li>State: {data.State}</li>
-                                <li>Total Wages: {data.TotalWages}</li>
-                                <li>Tax Returned Filled: {data.TaxReturnsFiled}</li>
-                                <li>Estimated Population: {data.EstimatedPopulation}</li>
-                                <li>Location: ({data.Lat}, {data.Long})</li>
-                            </ul>
+                                 <li>State: {data.State}</li>
+                                 <li>Total Wages: {data.TotalWages}</li>
+                                 <li>Tax Returned Filled: {data.TaxReturnsFiled}</li>
+                                 <li>Estimated Population: {data.EstimatedPopulation}</li>
+                                 <li>Location: ({data.Lat}, {data.Long})</li>
+                             </ul>
+                         </div>
                         </div>
                     )
                 })}
@@ -59,7 +61,7 @@ render(){
                 </label>
                 <input type="submit" value="submit"/>
             </form>
-            <p>Results Not Found</p>
+           <h4 className = "text-center">Results Not Found</h4>
         </div>)
     return(
     <div>{x}</div>)

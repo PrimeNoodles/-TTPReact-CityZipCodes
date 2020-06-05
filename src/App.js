@@ -6,9 +6,10 @@ class App extends Component{
  render(){
    return ( 
      <div>
-     <div className ="container-fluid bg-dark p-4">
+     <div className ="container-fluid bg-danger text-center text-white p-4 size">
+       <h4>Zip Search</h4>
       </div>
-          <div className ="container">
+          <div className ="container d-flex justify-content-center">
           <ZipCodes />
            </div>  
            </div>  
